@@ -39,6 +39,7 @@ import { NftMarketplace } from './contract/token/nft/nft-marketplace';
 export { NftMarketplaceMethods, NftMarketplaceOptions, } from './contract/token/nft/nft-marketplace';
 import { NftSale } from './contract/token/nft/nft-sale';
 export { CreateCancelBodyParams, NftSaleMethods, NftSaleOptions, NftSaleData, } from './contract/token/nft/nft-sale';
+import { VestingWalletV1 } from './contract/lockup/vesting-wallet-v1';
 export default class TonWeb {
     provider: HttpProvider;
     static version: string;
@@ -76,8 +77,10 @@ export default class TonWeb {
         LockupWalletV1: typeof LockupWalletV1;
         all: {
             'lockup-0.1': typeof LockupWalletV1;
+            'vesting-1': typeof VestingWalletV1;
         };
-        list: (typeof LockupWalletV1)[];
+        list: (LockupWalletV1 | VestingWalletV1)[];
+        VestingWalletV1: typeof VestingWalletV1;
     };
     static SubscriptionContract: typeof SubscriptionContract;
     static BlockSubscription: typeof BlockSubscription;
@@ -140,8 +143,10 @@ export default class TonWeb {
         LockupWalletV1: typeof LockupWalletV1;
         all: {
             'lockup-0.1': typeof LockupWalletV1;
+            'vesting-1': typeof VestingWalletV1;
         };
-        list: (typeof LockupWalletV1)[];
+        list: (LockupWalletV1 | VestingWalletV1)[];
+        VestingWalletV1: typeof VestingWalletV1;
     };
     constructor(provider?: HttpProvider);
     /**
